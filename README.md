@@ -1,5 +1,9 @@
 # players-api-skeleton
 
+# Requirements
+1. Mongo needs to be running locally for tests to pass. A docker-compose.yml file is provided. See https://docs.docker.com/compose/install/ for installation instructions.
+2. Node.js v8.9+
+
 ## Instructions
 
 Welcome to an Alchemy Engineering candidate assignment!
@@ -8,18 +12,36 @@ To complete this assignment, you will create the API to power the below conditio
 front end that allows admins to create users, who can then create ping pong players. Your job, should
 you choose to accept it, is to create an application to cover all of the use cases detailed in the documentation.
 
-As you can see, you'd be better suited to use node to complete this task. If you choose not to, however,
-the tests in the `test` directory must still pass.
+We've provided a project structure and pulled in a few specific libraries to
+help you get up and running quickly. Express is the web framework and Mongoose
+is the ORM. Six of the tests defined in user.spec.js are passing. It's up to
+you to get the 7 remaining tests to pass.
+
+All functionality involving Players is left up to you, but feel free to use
+the users implementation for inspiration.
+
+You're free to modify any of the code we provide out of the box. Just be ready to discuss
+your reasoning.
 
 TL;DR:
 
 1. Refer to the documentation below
-2. Build the API
+2. Complete the API
 3. Ensure all tests are passing
 4. Send us your code
 5. Win
 
+Bonus points if you:
+- discover and fix any potential security vulnerabilities. Are we sanitizing responses
+properly? Storing any sensitive data to Mongo?
+- Contribute tests of your own
+- demonstrate understanding of async/await
+
+We recommend you spend no more than 2-3 hours on this assignment.
+
 ## Tests
+
+Ensure Mongodb is running locally and then run
 
 ```
 npm test
