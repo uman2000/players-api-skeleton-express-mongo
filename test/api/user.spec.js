@@ -82,7 +82,7 @@ describe('User API', () => {
         .send({ email: 'notfound@email.com', password: data.password })
         .end(err => {
           expect(err).to.exist;
-          expect(err.status).to.equal(401);
+          expect(err.status).to.equal(404);
           done();
         });
     });
@@ -93,7 +93,7 @@ describe('User API', () => {
         .send({ email: data.email, password: '__wrong__' })
         .end(err => {
           expect(err).to.exist;
-          expect(err.status).to.equal(401);
+          expect(err.status).to.equal(404);
           done();
         });
     });

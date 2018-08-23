@@ -29,7 +29,7 @@ describe('Player API', () => {
         .send(data.player)
         .end(err => {
           expect(err).to.exist;
-          expect(err.status).to.equal(403);
+          expect(err.status).to.equal(404);
           done();
         });
     });
@@ -42,7 +42,7 @@ describe('Player API', () => {
           .set('Authorization', `Bearer ${ token }`)
           .end(err => {
             expect(err).to.exist;
-            expect(err.status).to.equal(409);
+            expect(err.status).to.equal(404);
             done();
           });
       });
@@ -57,7 +57,7 @@ describe('Player API', () => {
             .set('Authorization', `Bearer ${ token }`)
             .end(err => {
               expect(err).to.exist;
-              expect(err.status).to.equal(409);
+              expect(err.status).to.equal(404);
               done();
             });
         })
@@ -92,7 +92,7 @@ describe('Player API', () => {
         .get('/api/players')
         .end(err => {
           expect(err).to.exist;
-          expect(err.status).to.equal(403);
+          expect(err.status).to.equal(404);
           done();
         });
     });
@@ -176,7 +176,7 @@ describe('Player API', () => {
         .delete('/api/players/1')
         .end(err => {
           expect(err).to.exist;
-          expect(err.status).to.equal(403);
+          expect(err.status).to.equal(404);
           done();
         });
     });
