@@ -57,6 +57,7 @@ describe('User API', () => {
         .post('/api/user')
         .send(data.user)
         .end((err, res) => {
+        
           expect(err).not.to.exist;
           expect(res.status).to.equal(201);
           expect(res.body.success).to.be.true;
@@ -127,8 +128,9 @@ describe('User API', () => {
 
     it('should update the user data', (done) => {
       const updatedUser = Object.assign({}, data.user, { first_name: 'Elon', last_name: 'Musk' });
+       
       chai.request(server)
-        .put(`/api/user/${loggedInUser.id}`)
+       .put(`/api/user/${loggedInUser.id}`)
         .send(updatedUser)
         .end((err, res) => {
           expect(err).not.to.exist;

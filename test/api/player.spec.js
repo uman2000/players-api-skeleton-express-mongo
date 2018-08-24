@@ -28,8 +28,9 @@ describe('Player API', () => {
         .post('/api/players')
         .send(data.player)
         .end(err => {
+             console.log(err);
           expect(err).to.exist;
-          expect(err.status).to.equal(404);
+          expect(err.status).to.equal(409);
           done();
         });
     });
@@ -42,7 +43,7 @@ describe('Player API', () => {
           .set('Authorization', `Bearer ${ token }`)
           .end(err => {
             expect(err).to.exist;
-            expect(err.status).to.equal(404);
+            expect(err.status).to.equal(409);
             done();
           });
       });
@@ -57,7 +58,7 @@ describe('Player API', () => {
             .set('Authorization', `Bearer ${ token }`)
             .end(err => {
               expect(err).to.exist;
-              expect(err.status).to.equal(404);
+              expect(err.status).to.equal(409);
               done();
             });
         })
@@ -67,11 +68,13 @@ describe('Player API', () => {
     });
 
     it('should deliver player if successful', done => {
+       
       chai.request(server)
         .post('/api/players')
         .send(data.player)
         .set('Authorization', `Bearer ${ token }`)
         .end((err, res) => {
+            
           expect(err).not.to.exist;
           expect(res.status).to.equal(201);
           expect(res.body).to.be.a('object');

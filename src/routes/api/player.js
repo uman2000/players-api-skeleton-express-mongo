@@ -7,12 +7,14 @@ const { Player } = require('../../models');
 const router = new Router();
 
 router.post('/', (req, res, next) => {
-  //const { password, confirm_password } = req.body;
-  //if (!password || !confirm_password || password !== confirm_password) throw Boom.conflict('Passwords do not match');
+  var reqtoken = req.headers['Authorization'];
+   if (!reqtoken ) throw Boom.conflict('No token');
   const player = new Player(req.body);
+  
   player
     .save()
     .then(() => {
+         
       res.status(201).send({
         success: true,
         token: getToken(player),
@@ -22,6 +24,7 @@ router.post('/', (req, res, next) => {
 });
 
 
-//const getToken = user => jwt.sign({ userId: user._id }, jwtsecret);
+
+const getToken = player => jwt.sign({ playerId: player._id }, jwtsecret);
 
 module.exports = router;

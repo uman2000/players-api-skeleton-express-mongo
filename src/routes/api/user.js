@@ -21,6 +21,26 @@ router.post('/', (req, res, next) => {
     }).catch(next);
 });
 
+router.put('/:id', (req, res,next) => {
+        User.findById(req.param('id'), function(err, user){
+                      user.first_name=req.body.first_name;
+                       user.last_name=req.body.last_name;
+                       user.email=req.body.email;
+                       user.password=req.body.password;
+                      
+                      
+        user
+                      .save()
+                      .then(() => {
+                            res.status(200).send({
+                                                 success: true,
+                                                 token: getToken(user),
+                                                 user
+                                                 });
+                            }).catch(next);
+        });
+});
+
 const getToken = user => jwt.sign({ userId: user._id }, jwtsecret);
 
 module.exports = router;

@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const PlayerSchema = new mongoose.Schema(
   {
     first_name: { type: String, required: true },
-    last_name: { type: String, required: true }
+    last_name: { type: String, required: true },
+    handedness: { type: String, required: true },
+    rating: {type: Number , required: true}
+                                        
+                                        
   },
   {
     versionKey: false
